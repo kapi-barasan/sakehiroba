@@ -1,1 +1,36 @@
-<h1>お酒indexだよ</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 offset-md-1">
+      <h4 class="bg-info text-white d-inline px-4">投稿一覧</h4>
+      <div>
+      <%= link_to new_public_drink_path do %>
+        <i class="fas fa-plus" style="color:blue;"></i>
+        <i class="text-dark">新規商品登録</i>
+      <% end %>
+      </div>
+        <table class='table table-hover table-inverse'>
+        <thead class="table-info">
+        <tr>
+          <th>品名</th>
+          <th>内容</th>
+          <th></th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @drinks.each do |drink| %>
+          <tr>
+            <td>
+              <%= link_to public_drink_path(drink.id) do %>
+                <%= drink.name %>
+              <% end %>
+            </td>
+            <td><%= drink.body %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    </div>
+  </div>
+</div>
