@@ -17,8 +17,26 @@
 　　　　  <td><%= f.text_field :name %></td>
 　　　　</tr>
 　　　　<tr>
-　　　　  <td><%= f.label :detail, "商品説明" %></td>
-　　　　  <td><%= f.text_area :detail %></td>
+　　　　  <td><%= f.label :body, "商品説明" %></td>
+　　　　  <td><%= f.text_area :body %></td>
+　　　　</tr>
+　　　　<tr>
+　　　　  <td>
+　　　　    <div class="form-group row" id="star">
+              <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+              <%= f.hidden_field :rate, id: :review_star %>
+            </div>
+            <script>
+              $('#star').raty({
+              size     : 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+
+              scoreName: 'drink[rate]',
+              half: false,
+              });
+            </script>  
+          </td>
 　　　　</tr>
 　　　</table>
 　　</div>

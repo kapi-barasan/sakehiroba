@@ -20,14 +20,18 @@ Rails.application.routes.draw do
   }
 
   namespace :public do
-    
+
     resources :users do
       collection do
         patch "quit"
       end
     end
-    
-    resources :drinks
+
+    resources :drinks do
+      collection do
+        get 'search'
+      end
+    end
   end
 
 end

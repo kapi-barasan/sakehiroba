@@ -1,0 +1,16 @@
+<div class="relative-post-evaluation">
+  <span>評価：</span>
+  <span id="star-rate-<%= .id %>"></span>
+  <script>
+    $('#star-rate-<%= drink.id %>').raty({
+      size: 36,
+      starOff: "<%= asset_path('star-off.png') %>",
+      starOn: "<%= asset_path('star-on.png') %>",
+      starHalf: "<%= asset_path('star-half.png') %>",
+      half: true,
+      readOnly: true,
+      score: <%= post.evaluation %>,
+    });
+  </script>
+  <%= post.evaluation %>
+</div>

@@ -1,4 +1,5 @@
-<table class='table table-hover table-inverse'>
+<h1>検索結果</h1>
+<table>
   <thead>
     <tr>
       <th>ユーザー名</th>
@@ -10,10 +11,11 @@
     </tr>
   </thead>
   <tbody>
-    <% drinks.each do |drink| %>
-      <tr>
+    <% @results.each do |drink| %>
+          <tr>
         <td>
           <%= drink.user.name %>
+
         </td>
         <td>
           <%= link_to public_drink_path(drink.id) do %>
@@ -27,20 +29,7 @@
           <%# end %>
         </td>
         <td><%#= render "drink_comments/counter", drink: drink %></td>
-        <td>
-          <div id="star-rate<%= drink.id%>"></div>    
-            <script>
-              $('#star-rate<%= drink.id%>').raty({
-              size      : 36,
-              starOff   : '<%= asset_path('star-off.png') %>',
-              starOn    : '<%= asset_path('star-on.png') %>',
-              half      : false,
-              readOnly: true,
-              score: <%= drink.rate %>,
-              });
-            </script>
-          </div>
-        </td>
+        <td><%#= render "drinks/static_rate", drink: drink %></td>
       </tr>
     <% end %>
   </tbody>

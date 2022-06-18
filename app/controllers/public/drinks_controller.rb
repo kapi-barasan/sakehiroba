@@ -1,4 +1,6 @@
 class Public::DrinksController < ApplicationController
+  before_action :set_q, only: [:index, :search]
+
   
   def new
     @drink = Drink.new
@@ -38,8 +40,16 @@ class Public::DrinksController < ApplicationController
     redirect_to public_drinks_path
   end
   
+  def search
+    @results = @q.result
+  end
+  
   
   private
+  
+  def set_q
+    @q = Drink.ransack(params[:q])
+  end
   
   def drink_params
     params.require(:drink).permit(:name, :body, :rate, :image)
