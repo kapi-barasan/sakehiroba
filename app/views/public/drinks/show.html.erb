@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="row">
+    <div class="col-3 offset-1">
+      <%= image_tag @drink.get_image(100, 100) %>
+    </div>
+    <div class="col-5 offset-1">
+      <h4><strong><%= @drink.name %></strong></h4>
+      <p><%= @drink.body %></p>
+    </div>
+  </div>
+</div>

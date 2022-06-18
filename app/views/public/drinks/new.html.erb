@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-1">
+      <h4 class="bg-info text-white d-inline px-4">新規投稿</h4>
+    </div>
+  </div>
+  <%= form_with model:@drink, url: public_drinks_path, method: :post, local:true do |f| %>
+　<div class='row'>
+　  <div class="col-8 offset-2">
+      <table class="table table-borderless my-1">
+　　    <tr>
+　　　　  <td><%= f.label :image, "商品画像" %></td>
+　　　　  <td><%= f.file_field :image, accept: "image/*" %></td>
+　　　　</tr>
+　　　　<tr>
+　　　　  <td><%= f.label :name, "商品名" %></td>
+　　　　  <td><%= f.text_field :name %></td>
+　　　　</tr>
+　　　　<tr>
+　　　　  <td><%= f.label :body, "商品説明" %></td>
+　　　　  <td><%= f.text_area :body %></td>
+　　　　</tr>
+　　　　<tr>
+　　　　  <td>
+　　　　    <div class="form-group row" id="star">
+              <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
+              <%= f.hidden_field :rate, id: :review_star %>
+            </div>
+            <script>
+              $('#star').raty({
+              size     : 36,
+              starOff:  '<%= asset_path('star-off.png') %>',
+              starOn : '<%= asset_path('star-on.png') %>',
+
+              scoreName: 'drink[rate]',
+              half: false,
+              });
+            </script>  
+          </td>
+　　　　</tr>
+　　　</table>
+　　</div>
+　</div>
+　<div class="row">
+    <div class="col-12 text-center">
+      <%= f.submit '新規登録', class: "btn btn-success btn-lg mx-4" %>
+    </div>
+  </div>
+　<% end %>
+</div>

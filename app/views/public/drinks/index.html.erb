@@ -1,0 +1,18 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+    <div class='col-md-10'>
+      <h2>みんなの投稿一覧</h2>
+      <%= render 'index', drinks: @drinks%>
+    </div>
+    <div class='col-md-2'>
+      <h2>会員情報</h2>
+      <%= render 'public/users/info', user: current_user %>
+      <%= search_form_for @q, url: search_public_drinks_path do |f| %>
+        <%= f.label :name_cont, '品名' %>
+        <%= f.search_field :name_cont %>
+        <%= f.submit '検索' %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

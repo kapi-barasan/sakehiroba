@@ -1,0 +1,15 @@
+<table class='table'>
+  <tr><%= image_tag @drink.get_image(100, 100) %></tr>
+  <tr>
+	  <th>名前</th>
+	  <th><%= user.name %></th>
+	  <tr>
+	  <th>
+	    <% if user.name != "ゲストユーザー" %>
+        <%= link_to edit_public_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
+        <i class="fas fa-user-cog"></i>
+        <% end %>
+      <% end %>
+	  </th>
+	  </tr>
+</table>
