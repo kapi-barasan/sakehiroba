@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_12_091405) do
+ActiveRecord::Schema.define(version: 2022_06_19_065552) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -52,11 +52,33 @@ ActiveRecord::Schema.define(version: 2022_06_12_091405) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "drink_comments", force: :cascade do |t|
+    t.text "comment"
+    t.integer "user_id"
+    t.integer "drink_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "drink_tags", force: :cascade do |t|
+    t.integer "drink_id"
+    t.integer "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["drink_id", "tag_id"], name: "index_drink_tags_on_drink_id_and_tag_id", unique: true
+  end
+
   create_table "drinks", force: :cascade do |t|
     t.integer "user_id"
     t.string "name"
     t.text "body"
     t.float "rate"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

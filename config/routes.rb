@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     end
 
     resources :drinks do
+      resources :drink_comments, only: [:create, :destroy]
       collection do
         get 'search'
       end
