@@ -22,9 +22,10 @@
         </td>
         <td><%= drink.body %></td>
         <td>
-          <%# drink.tags.each do |tag| %>
+          <% drink.tags.each do |tag| %>
+          <%= tag.name %>
             <!--<li style="list-style: none;"><%#= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %></li>-->
-          <%# end %>
+          <% end %>
         </td>
         <td><%#= render "drink_comments/counter", drink: drink %></td>
         <td>

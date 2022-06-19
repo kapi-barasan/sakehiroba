@@ -21,6 +21,10 @@
 　　　　  <td><%= f.text_area :body %></td>
 　　　　</tr>
 　　　　<tr>
+　　　　  <td><%= f.label "タグ" %></td>
+　　　　  <td><%= f.text_field :tag_ids, class: "form-control", id:'tag_ids' %></td>
+　　　　</tr>
+　　　　<tr>
 　　　　  <td>
 　　　　    <div class="form-group row" id="star">
               <%= f.label :rate,'評価 ', class:'col-md-3 col-form-label' %>
