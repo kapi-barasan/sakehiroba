@@ -10,38 +10,38 @@
         <% if user_signed_in? %>
           <li>
             <%= link_to public_user_path(current_user),class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> マイページ
+               マイページ
             <% end %>
           </li>
           <li>
             <%=  link_to new_public_drink_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-book-open"></i> 投稿する
+               投稿する
             <% end %>
           </li>
           <li>
             <%=  link_to public_drinks_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-book-open"></i> みんなの投稿
+               みんなの投稿
             <% end %>
           </li>
           <li>
             <%= link_to destroy_user_session_path, method: :delete,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-out-alt"></i> ログアウト
+               ログアウト
             <% end %>
           </li>
         <% else %>
           <li>
             <%= link_to root_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-home"></i> トップ
+               トップ
             <% end %>
           </li>
           <li>
             <%= link_to new_user_registration_path,class: 'nav-link text-light' do %>
-              <i class="fas fa-user-plus"></i> 新規登録
+               新規登録
             <% end %>
           </li>
           <li>
             <%= link_to new_user_session_path ,class: 'nav-link text-light' do %>
-              <i class="fas fa-sign-in-alt"></i> ログイン
+               ログイン
             <% end %>
           </li>
         <% end %>
