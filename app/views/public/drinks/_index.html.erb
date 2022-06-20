@@ -1,4 +1,4 @@
-<table class='table table-hover table-inverse'>
+<table class='table table-success table-striped'>
   <thead>
     <tr>
       <th>ユーザー名</th>
@@ -27,9 +27,9 @@
             <!--<li style="list-style: none;"><%#= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %></li>-->
           <% end %>
         </td>
-        <td><%#= render "drink_comments/counter", drink: drink %></td>
+        <td><%= render "public/drink_comments/counter", drink: drink %></td>
         <td>
-          <div id="star-rate<%= drink.id%>"></div>    
+          <div id="star-rate<%= drink.id%>"></div>
             <script>
               $('#star-rate<%= drink.id%>').raty({
               size      : 36,
