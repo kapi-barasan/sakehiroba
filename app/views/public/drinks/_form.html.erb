@@ -1,0 +1,38 @@
+<%= form_with model:drink, url: public_drink_path(drink.id), local:true do |f| %>
+  <div class="form-group">
+    <%= f.label :商品名 %>
+    <%= f.text_field :name, class: 'form-control drink_name' %>
+  </div>
+  <div class="form-group">
+    <%= f.label :内容 %>
+    <%= f.text_area :body, class: 'form-control drink_body' %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :タグ %>
+    <%= f.text_field :tag_ids, value: @tag_list, class: 'form-control drink_tag_name' %>
+  </div>
+  
+    <div class="form-group" id="star">
+      <%= f.label :rate %>
+      <%= f.hidden_field :rate, id: :review_star, class:'form-control' %>
+    </div>
+    
+    <script>
+    $(document).on('turbolinks:load', function() {
+      $('#star').empty();
+      $('#star').raty({
+        size     : 36,
+        starOff:  '<%= asset_path('star-off.png') %>',
+        starOn : '<%= asset_path('star-on.png') %>',
+        starHalf: '<%= asset_path('star-half.png') %>',
+        scoreName: 'drink[rate]',
+        half: true,
+      });
+    })
+    </script>
+
+  <div class="form-group">
+    <%= f.submit  '変更する', class: 'btn btn-success' %>
+  </div>
+<% end %>

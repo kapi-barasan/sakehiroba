@@ -1,0 +1,67 @@
+<%= render 'search', q: @q%>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <h2>ユーザー情報</h2>
+      <%= render 'public/users/info', user: @drink.user %>
+    </div>
+    <div class='col-md-8 offset-md-1'>
+  		<h2>投稿詳細</h2>
+  		<table class='table'>
+  		  <tr>
+          <td><%= link_to public_user_path(@drink.user) do %>
+            <%#= image_tag @drink.user.get_image, size:"100x100" %><br>
+            <%= @drink.user.name %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to public_drink_path(@drink.id) do %>
+              <%= @drink.name %>
+            <% end %>
+          </td>
+          <td><%= @drink.body %></td>
+          <td>
+            <% @drink.tags.each do |tag| %>
+              <li style="list-style: none;"><%= tag.name %><%#= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %></li>
+            <% end %>
+          </td>
+          <td class="drink-comments-counter">
+            <%= render "public/drink_comments/counter", drink: @drink %>
+          </td>
+          <td>
+            <div id="star-rate<%= @drink.id%>"></div>
+            <script>
+              $('#star-rate<%= @drink.id%>').raty({
+              size      : 36,
+              starOff   : '<%= asset_path('star-off.png') %>',
+              starOn    : '<%= asset_path('star-on.png') %>',
+              half      : false,
+              readOnly: true,
+              score: <%= @drink.rate %>,
+              });
+            </script>
+          </div>
+          </td>
+          <% if @drink.user == current_user %>
+            <td><%= link_to '編集', edit_public_drink_path(@drink), class: "btn btn-sm btn-success edit_public_drink_#{@drink.id}" %></td>
+            <td><%= link_to '削除', public_drink_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_public_drink_#{@drink.id}" %></td>
+          <% end %>
+        </tr>
+      </table>
+
+      <div class="drink-comments-index">
+        <%= render "public/drink_comments/index", drink: @drink %>
+      </div>
+
+      <div>
+        <%= form_with model: [@drink, @drink_comment], url: public_drink_path(@drink.id) do |f| %>
+          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+          <%= f.submit "送信する" %>
+        <% end %>
+      </div>
+
+      <%#= render "public/drink_comments/form", drink: @drink, drink_comment: @drink_comment %>
+
+    </div>
+  </div>
+</div>

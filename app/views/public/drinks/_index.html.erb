@@ -1,0 +1,48 @@
+<table class='table table-success table-striped'>
+  <thead>
+    <tr>
+      <th>ユーザー名</th>
+      <th>品名</th>
+      <th>内容</th>
+      <th>タグ</th>
+      <th></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% drinks.each do |drink| %>
+      <tr>
+        <td>
+          <%= drink.user.name %>
+        </td>
+        <td>
+          <%= link_to public_drink_path(drink.id) do %>
+            <%= drink.name %>
+          <% end %>
+        </td>
+        <td><%= drink.body %></td>
+        <td>
+          <% drink.tags.each do |tag| %>
+          <%= tag.name %>
+            <!--<li style="list-style: none;"><%#= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %></li>-->
+          <% end %>
+        </td>
+        <td><%= render "public/drink_comments/counter", drink: drink %></td>
+        <td>
+          <div id="star-rate<%= drink.id%>"></div>
+            <script>
+              $('#star-rate<%= drink.id%>').raty({
+              size      : 36,
+              starOff   : '<%= asset_path('star-off.png') %>',
+              starOn    : '<%= asset_path('star-on.png') %>',
+              half      : false,
+              readOnly: true,
+              score: <%= drink.rate %>,
+              });
+            </script>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
