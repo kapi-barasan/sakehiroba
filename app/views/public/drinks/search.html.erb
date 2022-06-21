@@ -24,11 +24,12 @@
         </td>
         <td><%= drink.body %></td>
         <td>
-          <%# drink.tags.each do |tag| %>
+          <% drink.tags.each do |tag| %>
+            <%= drink.tags %>
             <!--<li style="list-style: none;"><%#= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %></li>-->
-          <%# end %>
+          <% end %>
         </td>
-        <td><%#= render "drink_comments/counter", drink: drink %></td>
+        <td><%= render "public/drink_comments/counter", drink: drink %></td>
         <td><%#= render "drinks/static_rate", drink: drink %></td>
       </tr>
     <% end %>

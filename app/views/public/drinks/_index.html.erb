@@ -17,6 +17,7 @@
         </td>
         <td>
           <%= link_to public_drink_path(drink.id) do %>
+          <%= image_tag drink.get_image, size(100, 100) %>
             <%= drink.name %>
           <% end %>
         </td>
@@ -31,14 +32,19 @@
         <td>
           <div id="star-rate<%= drink.id%>"></div>
             <script>
+
+              init();
+              function init(){
+              if (0 < $("#star-rate<%= drink.id %> img").length) return false;
               $('#star-rate<%= drink.id%>').raty({
-              size      : 36,
-              starOff   : '<%= asset_path('star-off.png') %>',
-              starOn    : '<%= asset_path('star-on.png') %>',
-              half      : false,
-              readOnly: true,
-              score: <%= drink.rate %>,
-              });
+                size      : 10,
+                starOff   : '<%= asset_path('star-off.png') %>',
+                starOn    : '<%= asset_path('star-on.png') %>',
+                half      : false,
+                readOnly: true,
+                score: <%= drink.rate %>,
+                });
+              }
             </script>
           </div>
         </td>
