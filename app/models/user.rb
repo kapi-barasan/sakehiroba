@@ -1,12 +1,13 @@
 class User < ApplicationRecord
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
          has_many :drinks
-         
+         has_many :drink_comments, dependent: :destroy
+
   has_one_attached :image
-  
+
   def get_image(width, height)
     unless image.attached?
       file_path = Rails.root.join('app/assets/images/no_image.jpg')
@@ -15,12 +16,12 @@ class User < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
 
-         
+
   def self.guest
     find_or_create_by!(name: 'ゲストユーザー' ,email: 'guest@example.com') do |user|
     user.password = SecureRandom.urlsafe_base64
     user.name = "ゲストユーザー"
     end
   end
-  
+
 end

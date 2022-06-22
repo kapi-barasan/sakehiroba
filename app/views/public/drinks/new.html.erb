@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-8 offset-1">
-      <h4 class="bg-info text-white d-inline px-4">新規投稿</h4>
+      <h4 class="bg-success text-light d-inline px-5">新規投稿</h4>
     </div>
   </div>
   <%= form_with model:@drink, url: public_drinks_path, method: :post, local:true do |f| %>
 　<div class='row'>
-　  <div class="col-8 offset-2">
+　  <div class="col-9 offset-2">
       <table class="table table-borderless my-1">
 　　    <tr>
 　　　　  <td><%= f.label :image, "商品画像" %></td>

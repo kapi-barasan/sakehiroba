@@ -1,4 +1,10 @@
     footer{
     background-color: #343a40;
     color: #fff;
+    position: absolute;
+    bottom: 0;
   }
+
+     body{
+         background-image: url("wood-texture_00004.jpg");
+     }

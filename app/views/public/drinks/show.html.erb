@@ -10,13 +10,13 @@
   		<table class='table'>
   		  <tr>
           <td><%= link_to public_user_path(@drink.user) do %>
-            <%#= image_tag @drink.user.get_image, size:"100x100" %><br>
+            <%= image_tag @drink.user.get_image(100, 100) %><br>
             <%= @drink.user.name %>
             <% end %>
           </td>
           <td>
             <%= link_to public_drink_path(@drink.id) do %>
-            
+
               <%= @drink.name %>
             <% end %>
           </td>
@@ -60,8 +60,8 @@
       </div>
 
       <div>
-        <%= form_with model: [@drink, @drink_comment], url: public_drink_path(@drink.id) do |f| %>
-          <%= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
+        <%= form_with model: [@drink, @drink_comment], url: public_drink_drink_comments_path(@drink.id) do |f| %>
+          <%= f.text_area :comment, rows: '9', placeholder: "コメントをここに" %>
           <%= f.submit "送信する" %>
         <% end %>
       </div>

@@ -13,6 +13,7 @@ class Public::DrinksController < ApplicationController
 
   def index
     @drinks = Drink.all
+    @drinks_all = Drink.all.page(params[:page]).per(10)
   end
 
   def create
