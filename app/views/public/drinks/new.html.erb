@@ -7,7 +7,7 @@
   <%= form_with model:@drink, url: public_drinks_path, method: :post, local:true do |f| %>
 　<div class='row'>
 　  <div class="col-9 offset-2">
-      <table class="table table-borderless my-1">
+      <table class="table table-border my-1 table-light">
 　　    <tr>
 　　　　  <td><%= f.label :image, "商品画像" %></td>
 　　　　  <td><%= f.file_field :image, accept: "image/*" %></td>
@@ -18,7 +18,7 @@
 　　　　</tr>
 　　　　<tr>
 　　　　  <td><%= f.label :body, "商品説明" %></td>
-　　　　  <td><%= f.text_area :body %></td>
+　　　　  <td><%= f.text_area :body, size: "40x10"  %></td>
 　　　　</tr>
 　　　　<tr>
 　　　　  <td><%= f.label "タグ" %></td>

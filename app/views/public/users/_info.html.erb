@@ -1,13 +1,14 @@
-<table class='table'>
-  <tr><%= image_tag user.get_image(100, 100) %></tr>
+<table class='table table-striped table-light'>
+  <th>会員情報</th>
+  <th><%= image_tag user.get_image(100, 100) %></th>
   <tr>
 	  <th>名前</th>
 	  <th><%= user.name %></th>
 	  <tr>
 	  <th>
 	    <% if user.name != "ゲストユーザー" %>
-        <%= link_to edit_public_user_path(user), class: "btn btn-outline-secondary btn-block edit_user_#{user.id}" do %>
-        <i class="fas fa-user-cog"></i>
+        <%= link_to edit_public_user_path(user), class: "btn btn-sm btn-primary btn-block edit_user_#{user.id}" do %>
+        会員情報編集
         <% end %>
       <% end %>
 	  </th>

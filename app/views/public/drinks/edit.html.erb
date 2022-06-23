@@ -1,9 +1,8 @@
 <div class='container'>
   <div class='row'>
     <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-  		<h1>商品情報編集</h1>
+  		<h2 class="bg-success text-light d-inline px-7">商品情報編集</h2>
     	<%#= render 'layouts/errors', obj: @book %>
   		<%= render 'form', drink: @drink %>
-  		<%= link_to '戻る', public_drink_path(@drink.id) %>
   </div>
 </div>

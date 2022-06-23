@@ -1,9 +1,12 @@
-<%= render 'search', q: @q%>
 <div class='container px-5 px-sm-0'>
   <div class='row'>
-    <div class='col-md-12'>
-      <h2>みんなの投稿一覧</h2>
+    <div class='col-md-9'>
+      <h2 class="bg-info text-light d-inline px-7">みんなの投稿一覧</h2>
       <%= render 'index', drinks: @drinks%>
+    </div>
+    <div class='col-md-3'>
+      <%= render 'search', q: @q%>
+      <%= render 'public/users/info', user: current_user %>
     </div>
   </div>
 </div>

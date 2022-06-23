@@ -1,37 +1,75 @@
-<h1>検索結果</h1>
-<table>
-  <thead>
-    <tr>
-      <th>ユーザー名</th>
-      <th>品名</th>
-      <th>内容</th>
-      <th>タグ</th>
-      <th></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @results.each do |drink| %>
-          <tr>
-        <td>
-          <%= drink.user.name %>
+      <div class='container px-5 px-sm-0'>
+        <div class='row'>
+          <div class='col-md-9'>
+            <h2 class="bg-info text-light d-inline px-7">検索結果</h2>
+              <tbody>
+                <% @results.each do |drink| %>
+                <div class="col-9">
+                  <h1>
+                    <%= link_to public_drink_path(drink.id) do %>
+                      <%= image_tag drink.get_image(140, 140) %>
+                    <% end %>
+                  </h1>
+                  <table class="table table-striped table-light">
+                    <tbody>
+                       <tr>
+                        <th scope="row">商品名</th>
+                        <td><%= drink.name %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">内容</th>
+                        <td><%= drink.body %></td>
+                      </tr>
+                      <tr>
+                        <th scope="row">ユーザー名</th>
+                        <td>
+                          <%= link_to public_user_path(drink.user) do %>
+                            <%= image_tag drink.user.get_image(50, 50) %><%= drink.user.name %>
+                          <% end %>
+                          </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">タグ</th>
+                        <td>
+                          <% drink.tags.each do |tag| %>
+                            <%= tag.name %>
+                          <% end %>
+                        </td>
+                      </tr>
+                      <tr>
+                        <th scope="row">評価</th>
+                        <td>
+                          <div id="star-rate<%= drink.id%>"></div>
+                        <script>
+                          init();
+                          function init(){
+                          if (0 < $("#star-rate<%= drink.id %> img").length) return false;
+                          $('#star-rate<%= drink.id%>').raty({
+                            size      : 10,
+                            starOff   : '<%= asset_path('star-off.png') %>',
+                            starOn    : '<%= asset_path('star-on.png') %>',
+                            half      : false,
+                            readOnly: true,
+                            score: <%= drink.rate %>,
+                            });
+                          }
+                        </script>
+                        </td>
+                      </tr>
+                    <th><%= render "public/drink_comments/counter", drink: drink %></th>
+                        </tbody>
+                        </table>
+                      </div>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+            </div>
+                <div class='col-md-3'>
+                  <%= render 'search', q: @q%>
+                  <%= render 'public/users/info', user: current_user %>
+                </div>
+        </div>
+        </div>
 
-        </td>
-        <td>
-          <%= link_to public_drink_path(drink.id) do %>
-            <%= drink.name %>
-          <% end %>
-        </td>
-        <td><%= drink.body %></td>
-        <td>
-          <% drink.tags.each do |tag| %>
-            <%= drink.tags %>
-            <!--<li style="list-style: none;"><%#= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %></li>-->
-          <% end %>
-        </td>
-        <td><%= render "public/drink_comments/counter", drink: drink %></td>
-        <td><%#= render "drinks/static_rate", drink: drink %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
