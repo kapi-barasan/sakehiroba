@@ -1,12 +1,12 @@
 <div class="container">
   <div class="row">
     <div class="col-8 offset-1">
-      <h4 class="bg-secondary text-white d-inline px-4">ログイン</h4>
+      <h4 class="bg-info text-white d-inline px-4">ログイン</h4>
     </div>
   </div>
   <div class="row">
     <div class="col-8 offset-2 my-4">
-      <h5 class="bg-secondary text-white d-inline px-4">会員の方はこちらからログイン</h5>
+      <h5 class="bg-info text-white d-inline px-4">会員の方はこちらからログイン</h5>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <table class="table table-borderless ml-5">
         <tr>
@@ -23,15 +23,15 @@
   <div class="row">
     <div class="col-12 text-center">
       <div class="actions">
-        <%= f.submit "L o g   i n", class: "btn btn-info px-5 ml-5" %>
+        <%= f.submit "ログイン", class: "btn btn-success px-5 ml-5" %>
       </div>
       <% end %>
     </div>
   </div>
   <div class="row">
     <div class="col-8 offset-2 my-4">
-      <h5 class="bg-secondary text-white d-inline px-4">会員登録がお済みでない方</h5>
-      <p class="ml-5 my-3"><%= link_to "こちら",new_user_registration_path, class: "mx-3" %> から新規登録を行ってください。</p>
+      <h5 class="bg-info text-white d-inline px-4">会員登録がお済みでない方</h5>
+      <p class="ml-5 my-3"><%= link_to "こちら",new_user_registration_path, class: "btn btn-info mx-3" %> から新規登録を行ってください。</p>
     </div>
   </div>
 </div>

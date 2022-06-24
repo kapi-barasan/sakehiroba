@@ -13,7 +13,7 @@ class Public::DrinksController < ApplicationController
 
   def index
     @drinks = Drink.all
-    @drinks_all = Drink.all.page(params[:page]).per(10)
+    @drinks_all = Drink.page(params[:page]).per(5)
   end
 
   def create

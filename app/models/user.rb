@@ -7,6 +7,8 @@ class User < ApplicationRecord
          has_many :drink_comments, dependent: :destroy
 
   has_one_attached :image
+  
+  validates :name, length: { minimum: 2, maximum: 20 }, uniqueness: true
 
   def get_image(width, height)
     unless image.attached?

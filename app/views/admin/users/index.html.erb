@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-8 offset-1">
+      <h4 class="bg-info text-white d-inline px-4">会員一覧</h4>
+    </div>
+        <div class="col-8 offset-2">
+          <table class='table table-hover table-light my-5'>
+            <thead class="table-info">
+              <tr>
+              <th>会員ID</th>
+              <th>氏名</th>
+              <th>メールアドレス</th>
+              <th>ステータス</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @users.each do |user| %>
+              <tr>
+                <td>
+                  <%= user.id %>
+                </td>
+                <td>
+                  <%=  link_to admin_user_path(user.id) do %>
+                    <%= user.name %>
+                  <% end %>
+                </td>
+                <td><%= user.email %></td>
+                <td>
+                  <% if user.is_deleted == true %>
+                    <p>退会済</p>
+                  <% else %>
+                    <p>有効</p>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </div>
+    </table>
+  </div>
+</div>

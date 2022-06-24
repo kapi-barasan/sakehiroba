@@ -8,6 +8,9 @@ class Drink < ApplicationRecord
 
   has_many  :drink_tags, dependent: :destroy
     has_many  :tags, through: :drink_tags
+  
+  validates :name,presence:true
+  validates :body,presence:true,length:{maximum:200}
     
   def save_tags(savedrink_tags)
       current_tags = self.tags.pluck(:name) unless self.tags.nil?
