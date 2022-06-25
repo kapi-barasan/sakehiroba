@@ -8,25 +8,27 @@ class Drink < ApplicationRecord
 
   has_many  :drink_tags, dependent: :destroy
     has_many  :tags, through: :drink_tags
-  
+
   validates :name,presence:true
   validates :body,presence:true,length:{maximum:200}
-    
+
+  #タグ機能
   def save_tags(savedrink_tags)
       current_tags = self.tags.pluck(:name) unless self.tags.nil?
       old_tags = current_tags - savedrink_tags
       new_tags = savedrink_tags - current_tags
-  		
+
       old_tags.each do |old_name|
         self.tags.delete Tag.find_by(name:old_name)
       end
-  		
+
       new_tags.each do |new_name|
         drink_tag = Tag.find_or_create_by(name:new_name)
         self.tags << drink_tag
       end
   end
 
+  #画像添付の際のデフォルト画像の指定
   def get_image(width, height)
       unless image.attached?
         file_path = Rails.root.join('app/assets/images/no_image.jpg')

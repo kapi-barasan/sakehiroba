@@ -4,6 +4,7 @@ class Public::SessionsController < Devise::SessionsController
   before_action :user_state, only: [:create]
   # before_action :configure_sign_in_params, only: [:create]
 
+  #ゲストログイン機能
   def guest_sign_in
     user = User.guest
     sign_in user
@@ -27,6 +28,7 @@ class Public::SessionsController < Devise::SessionsController
 
   protected
 
+    #退会済みユーザーのログイン制限
     def user_state
      @user = User.find_by(email: params[:user][:email].downcase)
      return if !@user

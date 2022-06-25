@@ -1,56 +1,57 @@
 <div class="container">
-  <div class="row">
-    <div class="col-8 offset-1">
+	<div class="row">
+    	<div class="col-8 offset-1">
 			<h4 class="bg-info text-white d-inline px-4">商品詳細</4>
 		</div>
 	</div>
-	 <div class="row">
-    <div class="col-3 offset-1 my-3">
+	<div class="row">
+    	<div class="col-3 offset-1 my-3">
 			<%= image_tag @drink.get_image(200,200) %>
 		</div>
 		<div class="col-7 offset-1">
 			<table class="table table-borderless table-light">
-			  <tr>
+				<tr>
 					<th>商品名</th>
 					<td><%= @drink.name %></td>
-			  </tr>
-			  <tr>
+			 	</tr>
+			  	<tr>
 					<th>内容</th>
 					<td><%= @drink.body %></td>
-			  </tr>
-			  <tr>
-			    <th>ユーザー名</th>
+			  	</tr>
+			  	<tr>
+			    	<th>ユーザー名</th>
 					<td><%= @drink.user.name %></td>
-			  </tr>
-			  <tr>
-			  	<th>タグ</th>
-			  	<td>
-			  		<% @drink.tags.each do |tag| %>
-            	<%= tag.name %>
-          	<% end %>
-			  	</td>
-			  </tr>
-			   <tr>
-			  	<th>評価</th>
-			  	<td>
-			  		<div id="star-rate<%= @drink.id%>"></div>
-            <script>
-	            init();
-	              function init(){
-	              if (0 < $("#star-rate<%= @drink.id %> img").length) return false;
-	              $('#star-rate<%= @drink.id%>').raty({
-	                size      : 10,
-	                starOff   : '<%= asset_path('star-off.png') %>',
-	                starOn    : '<%= asset_path('star-on.png') %>',
-	                half      : false,
-	                readOnly: true,
-	                score: <%= @drink.rate %>,
-	                });
-	              }
-            </script>
-			  	</td>
-			  </tr>
-		  </table>
+			  	</tr>
+			  	<tr>
+			  		<th>タグ</th>
+			  		<td>
+			  			<% @drink.tags.each do |tag| %>
+            				<%= tag.name %>
+          				<% end %>
+			  		</td>
+			  	</tr>
+			   	<tr>
+			  		<th>評価</th>
+			  		<td>
+			  			<div id="star-rate<%= @drink.id%>"></div>
+				            <script>
+					            init();
+					              function init(){
+					              if (0 < $("#star-rate<%= @drink.id %> img").length) return false;
+					              $('#star-rate<%= @drink.id%>').raty({
+					                size      : 10,
+					                starOff   : '<%= asset_path('star-off.png') %>',
+					                starOn    : '<%= asset_path('star-on.png') %>',
+					                half      : false,
+					                readOnly: true,
+					                score: <%= @drink.rate %>,
+					                });
+					              }
+				            </script>
+			  		</td>
+			  	</tr>
+		  	</table>
 		  <%= link_to '投稿を削除', admin_drink_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-lg btn-danger destroy_admin_drink_#{@drink.id}" %>
+		</div>
 	</div>
 </div>

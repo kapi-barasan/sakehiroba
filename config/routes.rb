@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   #サーバー起動時の画面
   root to: "homes#top"
 
-
+  #会員側のdevise
   devise_for :users,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -14,13 +14,13 @@ Rails.application.routes.draw do
     post 'users/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
-
+  #管理者側のdevise
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
   }
 
-  namespace :public do
 
+  namespace :public do
     resources :users do
       collection do
         patch "quit"

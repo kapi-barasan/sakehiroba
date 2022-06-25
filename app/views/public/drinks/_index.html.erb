@@ -10,7 +10,11 @@
         <tbody>
            <tr>
             <th scope="row">商品名</th>
-            <td><%= drink.name %></td>
+            <td>
+              <%= link_to public_drink_path(drink.id) do %>
+                <%= drink.name %>
+              <% end %>
+              </td>
           </tr>
           <tr>
             <th scope="row">内容</th>
@@ -36,20 +40,20 @@
             <th scope="row">評価</th>
             <td>
               <div id="star-rate<%= drink.id%>"></div>
-            <script>
-              init();
-              function init(){
-              if (0 < $("#star-rate<%= drink.id %> img").length) return false;
-              $('#star-rate<%= drink.id%>').raty({
-                size      : 10,
-                starOff   : '<%= asset_path('star-off.png') %>',
-                starOn    : '<%= asset_path('star-on.png') %>',
-                half      : false,
-                readOnly: true,
-                score: <%= drink.rate %>,
-                });
-              }
-            </script>
+                <script>
+                  init();
+                  function init(){
+                  if (0 < $("#star-rate<%= drink.id %> img").length) return false;
+                  $('#star-rate<%= drink.id%>').raty({
+                    size      : 10,
+                    starOff   : '<%= asset_path('star-off.png') %>',
+                    starOn    : '<%= asset_path('star-on.png') %>',
+                    half      : false,
+                    readOnly: true,
+                    score: <%= drink.rate %>,
+                    });
+                    }
+                </script>
             </td>
           </tr>
         <th><%= render "public/drink_comments/counter", drink: drink %></th>

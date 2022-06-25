@@ -1,27 +1,55 @@
     footer{
         background-color: #343a40;
         color: #fff;
-      }
+        font-family: 'Sorts Mill Goudy' , serif;
+    }
 
-     body{
+    body{
         background-image: url("24126295_s.jpg");
         padding-bottom: 70px;
-     }
+    }
+
+    main{
+        font-family: "游明朝", "YuMincho", "ヒラギノ明朝 Pro W3", "Hiragino Mincho Pro", "ＭＳ Ｐ明朝", "MS PMincho", serif;
+    }
 
 
-     .main-visual{
+    .main-visual{
          width: 100%;
          height: 500px;
          background-image: url("23907826_m.jpg");
          background-size: cover;
          background-position: center;
-     }
+    }
 
-     .main-text{
+    .main-text{
          position: absolute;
          color: black;
-         top: 20%;
-         left: 35%;
+         top: 30%;
+         left: 40%;
          font-weight: bold;
-         font-size: 60px;
-     }
+         font-size: 70px;
+         font-family: 'Sorts Mill Goudy' , serif;
+    }
+
+    .pagination>li>a {
+      border: none;
+      color: #696969;
+    }
+
+    .pagination>.active>a {
+      background: #93c9ff;
+      border-radius: 15px;
+    }
+
+    .pagination>li>a:hover {
+      border-radius: 15px;
+    }
+
+    .pagination {
+      justify-content: center;
+    }
+
+    .user_name {
+        color: #fff;
+    }

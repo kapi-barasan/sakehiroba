@@ -1,7 +1,7 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
     <div class='col-md-9'>
-      <h2 class="bg-info text-light d-inline px-7">投稿一覧</h2>
+      <h2 class="bg-info text-light d-inline px-7"><%= @user.name %>の投稿一覧</h2>
       <%= render 'public/drinks/index', drinks: @drinks %>
     </div>
     <div class='col-md-3'>

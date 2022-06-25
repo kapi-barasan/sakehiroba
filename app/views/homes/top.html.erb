@@ -1,34 +1,34 @@
-        <div class='main-visual'>
-            <p class='main-text'>
-                ようこそ酒広場へ!
-            </p>
-        </div>
-
+<div class='main-visual'>
+    <p class='main-text'>
+        Sakehiroba
+    </p>
+</div>
 <div class='container'>
     <div class='row'>
-        <div class='col-4'>
+        <div class='col-5'>
             <table>
                 <tr>
-                    <th>登録はこちらから→</th>
+                    <th>登録はこちら→</th>
                     <td><%= link_to '新規登録', new_user_registration_path, class: 'btn btn-primary nav-link' %></td>
                 </tr>
                 <tr>
-                    <th>会員様はこちらから→</th>
+                    <th>会員様はこちら→</th>
                     <td><%= link_to 'ログイン', new_user_session_path, class: 'btn btn-primary nav-link' %></td>
                 </tr>
                 <tr>
-                    <th>お試しの方はこちらから→</th>
+                    <th>お試しはこちら→</th>
                     <td><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: 'btn btn-primary nav-link', method: :post %></td>
                 </tr>
             </table>
         </div>
-        <div class='col-8'>
-                <button type="button" class="btn btn-info btn-lg btn-block" data-toggle="collapse" data-target="#demo">このサイトについて</button>
-                <div id="demo" class="collapse"><strong><h4>
-                酒広場は、お酒の感想、レビューを投稿し共有し合うサイトです。<br/>
-                お酒を試してみたい初心者からお酒好きまで幅広い方々に利用していただけます。<br/>
-                お気軽に閲覧、投稿してみてください。
-                </h4></strong>
+        <div class='col-7'>
+            <button type="button" class="btn btn-info btn-lg btn-block" data-toggle="collapse" data-target="#demo">-このサイトについて-</button>
+                <div id="demo" class="collapse">
+                    <strong><h4>
+                    酒広場は、お酒の感想、レビューを投稿し共有し合うサイトです。<br/>
+                    お酒を試してみたい初心者からお酒好きまで幅広い方々に利用していただけます。<br/>
+                    お気軽に閲覧、投稿してみてください。
+                    </strong></h4>
                 </div>
         </div>
     </div>

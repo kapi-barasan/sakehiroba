@@ -1,8 +1,8 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
-  before_action :ensure_guest_user, only: [:edit]
-  before_action :set_q, only: [:index, :search, :show]
+  before_action :ensure_guest_user, only: [:edit]#ゲストユーザー
+  before_action :set_q, only: [:index, :search, :show]#検索機能
 
   def show
     @user = User.find(params[:id])
@@ -37,6 +37,7 @@ class Public::UsersController < ApplicationController
 
   private
   
+  #検索機能
   def set_q
     @q = Drink.ransack(params[:q])
   end
