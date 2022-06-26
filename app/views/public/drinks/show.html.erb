@@ -3,7 +3,7 @@
     <div class='col-md-9'>
       <%= render "layouts/errors", obj: @drink %>
       <h2 class="bg-info text-light d-inline px-7"><%= @drink.user.name %>の投稿詳細</h2>
-  		<h2><%= image_tag @drink.get_image(180, 180) %></h2>
+  		<h2 class='image'><%= image_tag @drink.get_image(180, 180) %></h2>
   		<table class='table table-striped table-light'>
   		  <tr>
   		    <th scope="row">商品名</th>

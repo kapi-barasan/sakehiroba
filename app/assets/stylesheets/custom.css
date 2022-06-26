@@ -53,3 +53,11 @@
     .user_name {
         color: #fff;
     }
+
+    .error-message {
+      text-align: center;
+    }
+
+    .image {
+      text-align: center
+    }

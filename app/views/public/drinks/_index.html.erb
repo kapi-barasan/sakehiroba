@@ -1,9 +1,9 @@
   <tbody>
     <% drinks.each do |drink| %>
     <div class="col-9">
-      <h1>
+      <h1 class="image">
         <%= link_to public_drink_path(drink.id) do %>
-          <%= image_tag drink.get_image(140, 140) %>
+          <%= image_tag drink.get_image(150, 150) %>
         <% end %>
       </h1>
       <table class="table table-striped table-light">

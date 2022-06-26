@@ -4,11 +4,12 @@
     </p>
 </div>
 <div class='container'>
+    <p id="notice"><%= notice %></p>
     <div class='row'>
         <div class='col-5'>
             <table>
                 <tr>
-                    <th>登録はこちら→</th>
+                    <th>ご登録はこちら→</th>
                     <td><%= link_to '新規登録', new_user_registration_path, class: 'btn btn-primary nav-link' %></td>
                 </tr>
                 <tr>
@@ -17,7 +18,7 @@
                 </tr>
                 <tr>
                     <th>お試しはこちら→</th>
-                    <td><%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, class: 'btn btn-primary nav-link', method: :post %></td>
+                    <td><%= link_to 'ゲストログイン(閲覧用)', users_guest_sign_in_path, class: 'btn btn-primary nav-link', method: :post %></td>
                 </tr>
             </table>
         </div>
