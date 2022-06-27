@@ -4,9 +4,9 @@
       <h4 class="bg-info text-white d-inline px-4"><%= @user.name %>の会員情報編集</h4>
     </div>
     <div class="col-8 offset-2">
+      <%= form_with model:@user, url: admin_user_path(@user.id) do |f| %>
       <table class="table table-light my-5">
         <tbody>
-          <%= form_with model:@user, url: admin_user_path(@user.id) do |f| %>
             <tr>
               <td><%= f.label :id, "会員ID" %></td>
               <td colspan="4"><%= @user.id %></td>
