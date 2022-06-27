@@ -3,11 +3,15 @@
     <div class="col-8 offset-1">
       <h4 class="bg-success text-white d-inline px-4">会員情報編集</h4>
     </div>
+  </div>
+</div>
+  <div class= "container">
+    <div class="row">
     <%= render 'layouts/errors', obj: @user %>
-    <div class="col-10 offset-1">
+    <div class="col-12">
+        <%= form_with model:@user, url: public_user_path(current_user), local:true do |f| %>
       <table class="table table-light my-5">
         <tbody>
-          <%= form_with model:@user, url: public_user_path(current_user), local:true do |f| %>
           <tr>
          　  <td><%= f.label :image,"プロフィール写真" %></td>
 　　　　    <td><%= f.file_field :image, accept: "image/*" %></td>

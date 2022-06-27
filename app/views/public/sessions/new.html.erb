@@ -1,37 +1,39 @@
 <div class="container">
-  <div class="row">
-    <div class="col-8 offset-1">
-      <h4 class="bg-info text-white d-inline px-4">ログイン</h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-8 offset-2 my-4">
-      <h5 class="bg-info text-white d-inline px-4">会員の方はこちらからログイン</h5>
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <table class="table table-borderless ml-5">
-        <tr>
-          <th><%= f.label :メールアドレス %></th>
-          <th><%= f.email_field :email, autofocus: true, autocomplete: "email" %></th>
-        </tr>
-        <tr>
-          <th><%= f.label :パスワード %></th>
-          <th><%= f.password_field :password, autocomplete: "current-password" %></th>
-        </tr>
-      </table>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-12 text-center">
-      <div class="actions">
-        <%= f.submit "ログイン", class: "btn btn-success px-5 ml-5" %>
+  <h3 class="d-inline-block px-4 ml-5 orange bg-info text-white"><i class="fas fa-user dark-brown"></i> ログイン</h3>
+
+  <div class="mx-4 mt-3">
+    <div class="log-in">
+      <div class="text-center"><p id="notice"><%= notice %></p></div>
+
+      <div class="form w-75 mx-auto my-4">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+          <div class="form-group row">
+            <label for="email" class="col-sm-3 col-form-label">メールアドレス</label>
+            <div class="col-sm-9">
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", "placeholder" => "sample@example.com" %>
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="password" class="col-sm-3 col-form-label">パスワード</label>
+            <div class="col-sm-9">
+              <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="actions text-center mt-4">
+            <%= f.submit "ログイン", class: "btn bg-dark-brown px-5 btn-success" %>
+          </div>
+        <% end %>
       </div>
-      <% end %>
     </div>
-  </div>
-  <div class="row">
-    <div class="col-8 offset-2 my-4">
-      <h5 class="bg-info text-white d-inline px-4">会員登録がお済みでない方</h5>
-      <p class="ml-5 my-3"><%= link_to "こちら",new_user_registration_path, class: "btn btn-info mx-3" %> から新規登録を行ってください。</p>
+
+    <div class="sign-up mt-5">
+      <h5 class="bg-info text-white d-inline px-4"> 会員登録がお済でない方 </h5>
+        <p class="text-center"><%= link_to "こちら", new_user_registration_path, class: "btn btn-info hover-link" %> から新規登録を行ってください。</p>
     </div>
+
   </div>
+
 </div>
