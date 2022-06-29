@@ -28,7 +28,7 @@ class Public::UsersController < ApplicationController
     reset_session
     redirect_to root_path
   end
-  
+
   def search
     @results = @q.result
   end
@@ -36,7 +36,7 @@ class Public::UsersController < ApplicationController
 
 
   private
-  
+
   #検索機能
   def set_q
     @q = Drink.ransack(params[:q])
@@ -46,13 +46,14 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:name, :email, :image)
   end
 
+  #ゲストユーザーがユーザー編集に飛べないようにする
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "ゲストユーザー"
       redirect_to public_user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
-  
+
   def ensure_correct_user
     @user = User.find(params[:id])
     unless @user == current_user
