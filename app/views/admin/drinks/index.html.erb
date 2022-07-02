@@ -8,20 +8,22 @@
         <thead class="table-info">
         <tr>
           <th>投稿ID</th>
-          <th>ユーザー名</th>
           <th>商品名</th>
+          <th>会員名</th>
+          <th>感情スコア</th>
         </tr>
       </thead>
       <tbody>
         <% @drinks.each do |drink| %>
           <tr>
             <td><%= drink.id %></td>
-            <td><%= drink.user.name %></td>
             <td>
               <%= link_to admin_drink_path(drink.id) do %>
                 <%= drink.name %>
               <% end %>
             </td>
+            <td><%= drink.user.name %></td>
+            <td><%= drink.score %></td>
           </tr>
         <% end %>
       </tbody>

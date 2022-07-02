@@ -50,6 +50,10 @@
 				            </script>
 			  		</td>
 			  	</tr>
+			  	<tr>
+			  		<th>感情スコア</th>
+			  		<td><%= @drink.score %></td>
+			  	</tr>
 		  	</table>
 		  <%= link_to '投稿を削除', admin_drink_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-lg btn-danger destroy_admin_drink_#{@drink.id}" %>
 		</div>
