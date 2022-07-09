@@ -20,7 +20,7 @@ class Public::DrinksController < ApplicationController
     @drink = Drink.new(drink_params)
     @drink.user_id = current_user.id
     tag_list = params[:drink][:tag_ids].split(',')
-    @drink.score = Language.get_data(drink_params[:body])#APIの記述
+    @drink.score = Language.get_data(drink_params[:body])#自然言語APIの記述
     if @drink.save
       @drink.save_tags(tag_list)
       redirect_to public_drink_path(@drink)
