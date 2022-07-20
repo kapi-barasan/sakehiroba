@@ -1,4 +1,4 @@
-<%= form_with(model:[drink, drink_comment], url: public_drink_drink_comments_path(drink.id), local: false) do |f| %>
+<%= form_with(model:[drink, drink_comment], url: drink_drink_comments_path(drink.id), local: false) do |f| %>
   <%= f.text_area :comment, rows:'5',placeholder: "例)飲んでみたい！", class: "w-100 comment-textarea" %>
   <%= f.submit "送信する", class: "btn btn-lg btn-base-1 mt-20 pull-right btn-outline-secondary" %>
 <% end %>

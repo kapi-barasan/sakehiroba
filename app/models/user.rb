@@ -3,8 +3,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-         has_many :drinks
-         has_many :drink_comments, dependent: :destroy
+  has_many :drinks
+  has_many :drink_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   #画像表示用
   has_one_attached :image

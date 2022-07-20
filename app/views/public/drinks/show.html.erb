@@ -7,14 +7,12 @@
   		<table class='table table-striped table-light'>
   		  <tr>
   		    <th scope="row">商品名</th>
-  		    <td>
-              <%= @drink.name %>
-          </td>
+  		    <td><%= @drink.name %></td>
         </tr>
         <tr>
           <th scope="row">会員名</th>
           <td>
-            <%= link_to public_user_path(@drink.user) do %>
+            <%= link_to user_path(@drink.user) do %>
             <%= image_tag @drink.user.get_image(50, 50) %><br>
             <%= @drink.user.name %>
             <% end %>
@@ -28,7 +26,7 @@
           <th scope="row">タグ</th>
           <td>
             <% @drink.tags.each do |tag| %>
-              <li style="list-style: none;"><%= tag.name %><%#= link_to tag.name, search_path(content: tag.name, model:"tag", method: "perfect") %></li>
+              <li style="list-style: none;"><%= tag.name %></li>
             <% end %>
           </td>
         </tr>
@@ -53,6 +51,23 @@
           </td>
         </tr>
         <tr>
+          <td>
+             <% if @drink.favorited_by?(current_user) %>
+              <p>
+                <%= link_to drink_favorite_path(@drink), method: :delete do %>
+                  ♥<%= @drink.favorites.count %> いいね
+                <% end %>
+              </p>
+              <% else %>
+              <p>
+                <%= link_to drink_favorites_path(@drink), method: :post do %>
+                  ♡<%= @drink.favorites.count %> いいね
+                <% end %>
+              </p>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
           <th scope="row">コメント一覧</th>
           <td class="drink-comments-index">
             <%= render "public/drink_comments/index", drink: @drink %>
@@ -65,9 +80,13 @@
           </td>
         </tr>
         <tr>
+  		    <th scope="row">投稿日時</th>
+  		    <td><%= @drink.created_at.strftime('%Y/%m/%d %H:%M') %></td>
+        </tr>
+        <tr>
           <% if @drink.user == current_user %>
-            <td><%= link_to '投稿を編集', edit_public_drink_path(@drink), class: "btn btn-lg btn-success edit_public_drink_#{@drink.id}" %></td>
-            <td><%= link_to '投稿を削除', public_drink_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-lg btn-danger destroy_public_drink_#{@drink.id}" %></td>
+            <td><%= link_to '投稿を編集', edit_drink_path(@drink), class: "btn btn-lg btn-success edit_drink_#{@drink.id}" %></td>
+            <td><%= link_to '投稿を削除', drink_path, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-lg btn-danger destroy_drink_#{@drink.id}" %></td>
           <% end %>
         </tr>
         </table>

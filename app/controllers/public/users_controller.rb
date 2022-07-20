@@ -16,7 +16,7 @@ class Public::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
-      redirect_to public_user_path(@user)
+      redirect_to user_path(@user)
     else
       render "edit"
     end
@@ -50,14 +50,14 @@ class Public::UsersController < ApplicationController
   def ensure_guest_user
     @user = User.find(params[:id])
     if @user.name == "ゲストユーザー"
-      redirect_to public_user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
+      redirect_to user_path(current_user) , notice: 'ゲストユーザーはプロフィール編集画面へ遷移できません。'
     end
   end
 
   def ensure_correct_user
     @user = User.find(params[:id])
     unless @user == current_user
-      redirect_to public_user_path(current_user)
+      redirect_to user_path(current_user)
     end
   end
 

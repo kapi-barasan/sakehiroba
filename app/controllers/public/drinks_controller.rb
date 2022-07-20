@@ -23,7 +23,7 @@ class Public::DrinksController < ApplicationController
     @drink.score = Language.get_data(drink_params[:body])#自然言語APIの記述
     if @drink.save
       @drink.save_tags(tag_list)
-      redirect_to public_drink_path(@drink)
+      redirect_to drink_path(@drink)
     else
       render 'new'
     end
@@ -39,7 +39,7 @@ class Public::DrinksController < ApplicationController
     tag_list = params[:drink][:tag_ids].split(',')
     if @drink.update(drink_params)
       @drink.save_tags(tag_list)
-      redirect_to public_drink_path(@drink)
+      redirect_to drink_path(@drink)
     else
       render "edit"
     end
@@ -48,7 +48,7 @@ class Public::DrinksController < ApplicationController
   def destroy
     @drink = Drink.find(params[:id])
     @drink.destroy
-    redirect_to public_drinks_path
+    redirect_to drinks_path
   end
 
   def search

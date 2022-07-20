@@ -5,7 +5,7 @@
       <%= render "layouts/errors", obj: @drink %>
     </div>
   </div>
-  <%= form_with model:@drink, url: public_drinks_path, method: :post, local:true do |f| %>
+  <%= form_with model:@drink, url: drinks_path, method: :post, local:true do |f| %>
 　<div class='row'>
 　  <div class="col-9 offset-2">
       <table class="table table-border my-1 table-light">
@@ -23,7 +23,7 @@
 　　　　</tr>
 　　　　<tr>
 　　　　  <td><%= f.label "タグ" %></td>
-　　　　  <td><%= f.text_field :tag_ids, class: "form-control", id:'tag_ids' %></td>
+　　　　  <td><%= f.text_field :tag_ids, placeholder: ",で区切ると複数登録できます", class: "form-control", id:'tag_ids' %></td>
 　　　　</tr>
 　　　　<tr>
 　　　　  <td>

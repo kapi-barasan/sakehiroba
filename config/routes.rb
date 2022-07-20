@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   }
 
 
-  namespace :public do
+  scope module: :public do
     resources :users do
       collection do
         patch "quit"
@@ -29,6 +29,7 @@ Rails.application.routes.draw do
 
     resources :drinks do
       resources :drink_comments, only: [:create, :destroy]
+      resources :favorites, only: [:create, :destroy]
       collection do
         get 'search'
       end

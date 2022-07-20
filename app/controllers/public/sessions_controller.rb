@@ -8,7 +8,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to public_drinks_path, notice: 'ゲストユーザーとしてログインしました。'
+    redirect_to drinks_path, notice: 'ゲストユーザーとしてログインしました。'
   end
 
   # GET /resource/sign_in

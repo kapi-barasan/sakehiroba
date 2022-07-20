@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
       if resource_or_scope.is_a?(Admin)
           admin_drinks_path
       else
-          public_drinks_path
+          drinks_path
       end
   end
 
