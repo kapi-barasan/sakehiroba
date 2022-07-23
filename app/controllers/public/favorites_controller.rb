@@ -1,5 +1,5 @@
 class Public::FavoritesController < ApplicationController
-  
+
   def create
     drink = Drink.find(params[:drink_id])
     @favorite = current_user.favorites.new(drink_id: drink.id)
@@ -13,5 +13,5 @@ class Public::FavoritesController < ApplicationController
     @favorite.destroy
     redirect_to drink_path(drink)
   end
-  
+
 end
